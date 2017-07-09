@@ -21,6 +21,8 @@ func _ready():
 	var sprite_height = sprite_texture.get_height()
 	plot_width_per = sprite_width / PLOT_WIDTH
 	plot_height_per = sprite_height / PLOT_HEIGHT
+	get_node("../Ambiance").set_volume(1.5)
+	get_node("../BGM").set_volume(0.7)
 	
 	# change cursor
 	#var resized_passive = cursor_passive.get_data().resized(50,50)
@@ -54,14 +56,14 @@ func _poke_plot(var x, var y):
 			(y+0.5)*plot_height_per)
 		plot[x][y].set_pos(centered_position)
 		add_child(plot[x][y])
-		get_node("../BirdChirp1").play()
+		get_node("../PlantSeed").play()
 		#print(str(x)+", "+str(y))
 	else:
 		if (plot[x][y].is_grown()):
 			#print("rip")
 			plot[x][y].queue_free()
 			plot[x][y] = null
-			get_node("../BirdChirp2").play()
+			get_node("../PlantPicked1").play()
 		else:
 			plot[x][y].grow()
 
