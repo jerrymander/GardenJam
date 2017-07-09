@@ -54,12 +54,14 @@ func _poke_plot(var x, var y):
 			(y+0.5)*plot_height_per)
 		plot[x][y].set_pos(centered_position)
 		add_child(plot[x][y])
+		get_node("../BirdChirp1").play()
 		#print(str(x)+", "+str(y))
 	else:
 		if (plot[x][y].is_grown()):
 			#print("rip")
 			plot[x][y].queue_free()
 			plot[x][y] = null
+			get_node("../BirdChirp2").play()
 		else:
 			plot[x][y].grow()
 
