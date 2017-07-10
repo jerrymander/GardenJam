@@ -48,7 +48,8 @@ func _input(var ev):
 		plot_click_x = floor(plot_click_x / plot_width_per)
 		plot_click_y = floor(plot_click_y / plot_height_per)
 		
-		if (plot_click_x < PLOT_WIDTH && plot_click_y < PLOT_HEIGHT):
+		if (plot_click_x < PLOT_WIDTH && plot_click_y < PLOT_HEIGHT 
+			&& plot_click_x >= 0 && plot_click_y >= 0):
 			_poke_plot(plot_click_x, plot_click_y)
 
 func _poke_plot(var x, var y):
