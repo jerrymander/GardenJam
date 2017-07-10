@@ -11,7 +11,10 @@ func init_plant(var name, var frames):
 	plant_frames.set_sprite_frames(frames)
 	add_child(plant_frames)
 	return self
-	
+
+func get_plant_name():
+	return plant_name
+
 func get_current_stage():
 	return plant_frames.get_frame()
 

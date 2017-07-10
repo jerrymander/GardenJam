@@ -2,9 +2,13 @@ extends Control
 
 onready var turnip_house = preload("res://scenes/InsideTurnip.tscn")
 
+var seed_packet = preload("res://scenes/objects/SeedPacket.tscn")
+
 func _ready():
 	set_process_input(true)
-
+	var packet = seed_packet.instance()
+	packet.set_pos(Vector2(0,550))
+	add_child(packet)
 
 func _on_ToHouse_pressed():
 	print("clicked")

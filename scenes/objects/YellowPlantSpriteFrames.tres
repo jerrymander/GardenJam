@@ -1,0 +1,16 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=1]
+
+[ext_resource path="res://asset/naraessets/plant stage 1 yellow.png" type="Texture" id=1]
+[ext_resource path="res://asset/naraessets/plant stage 2 yellow.png" type="Texture" id=2]
+[ext_resource path="res://asset/naraessets/plant stage 3 yellow.png" type="Texture" id=3]
+[ext_resource path="res://asset/naraessets/plant stage 4 yellow.png" type="Texture" id=4]
+
+[resource]
+
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+
