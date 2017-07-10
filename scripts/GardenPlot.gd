@@ -62,14 +62,14 @@ func _poke_plot(var x, var y):
 			(y+0.5)*plot_height_per)
 		plot[x][y].set_pos(centered_position)
 		add_child(plot[x][y])
-		get_node("../PlantSeed").play()
+		get_node("../SamplePlayer").play("sfx_doink_1")
 		#print(str(x)+", "+str(y))
 	else:
 		if (plot[x][y].is_grown()):
 			#print("rip")
 			plot[x][y].queue_free()
 			plot[x][y] = null
-			get_node("../PlantPicked1").play()
+			get_node("../SamplePlayer").play("sfx_veggierip_2")
 		else:
 			plot[x][y].grow()
 
