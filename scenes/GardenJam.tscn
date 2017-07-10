@@ -13,15 +13,15 @@
 [ext_resource path="res://asset/sound/sfx_doink_2.smp" type="Sample" id=11]
 [ext_resource path="res://asset/sound/sfx_noisesweep_1.smp" type="Sample" id=12]
 [ext_resource path="res://asset/sound/sfx_noisesweep_2.smp" type="Sample" id=13]
-[ext_resource path="res://asset/sound/sfx_pings_1.smp" type="Sample" id=14]
-[ext_resource path="res://asset/sound/sfx_pings_2.smp" type="Sample" id=15]
-[ext_resource path="res://asset/sound/sfx_pings_3.smp" type="Sample" id=16]
-[ext_resource path="res://asset/sound/sfx_pings_4.smp" type="Sample" id=17]
-[ext_resource path="res://asset/sound/sfx_pings_5.smp" type="Sample" id=18]
-[ext_resource path="res://asset/sound/sfx_pings_6.smp" type="Sample" id=19]
-[ext_resource path="res://asset/sound/sfx_pings_7.smp" type="Sample" id=20]
-[ext_resource path="res://asset/sound/sfx_pluckypings_10.smp" type="Sample" id=21]
-[ext_resource path="res://asset/sound/sfx_pluckypings_11.smp" type="Sample" id=22]
+[ext_resource path="res://asset/sound/sfx_pluckypings_1.smp" type="Sample" id=14]
+[ext_resource path="res://asset/sound/sfx_pluckypings_10.smp" type="Sample" id=15]
+[ext_resource path="res://asset/sound/sfx_pluckypings_11.smp" type="Sample" id=16]
+[ext_resource path="res://asset/sound/sfx_pluckypings_2.smp" type="Sample" id=17]
+[ext_resource path="res://asset/sound/sfx_pluckypings_3.smp" type="Sample" id=18]
+[ext_resource path="res://asset/sound/sfx_pluckypings_4.smp" type="Sample" id=19]
+[ext_resource path="res://asset/sound/sfx_pluckypings_5.smp" type="Sample" id=20]
+[ext_resource path="res://asset/sound/sfx_pluckypings_6.smp" type="Sample" id=21]
+[ext_resource path="res://asset/sound/sfx_pluckypings_7.smp" type="Sample" id=22]
 [ext_resource path="res://asset/sound/sfx_pluckypings_8.smp" type="Sample" id=23]
 [ext_resource path="res://asset/sound/sfx_pluckypings_9.smp" type="Sample" id=24]
 [ext_resource path="res://asset/sound/sfx_veggierip_1.smp" type="Sample" id=25]
@@ -52,13 +52,13 @@ tracks/0/keys = {
 [sub_resource type="SampleLibrary" id=2]
 
 samples/sfx_doink_1 = {
-"db": 0.0,
+"db": -12.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 10 )
 }
 samples/sfx_doink_2 = {
-"db": 0.0,
+"db": 5.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 11 )
@@ -75,55 +75,55 @@ samples/sfx_noisesweep_2 = {
 "priority": 0,
 "sample": ExtResource( 13 )
 }
-samples/sfx_pings_1 = {
+samples/sfx_pluckypings_1 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 14 )
 }
-samples/sfx_pings_2 = {
+samples/sfx_pluckypings_10 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 15 )
 }
-samples/sfx_pings_3 = {
+samples/sfx_pluckypings_11 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 16 )
 }
-samples/sfx_pings_4 = {
+samples/sfx_pluckypings_2 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 17 )
 }
-samples/sfx_pings_5 = {
+samples/sfx_pluckypings_3 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 18 )
 }
-samples/sfx_pings_6 = {
+samples/sfx_pluckypings_4 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 19 )
 }
-samples/sfx_pings_7 = {
+samples/sfx_pluckypings_5 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 20 )
 }
-samples/sfx_pluckypings_10 = {
+samples/sfx_pluckypings_6 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 21 )
 }
-samples/sfx_pluckypings_11 = {
+samples/sfx_pluckypings_7 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
@@ -302,7 +302,7 @@ autoplay = ""
 
 [node name="SamplePlayer" type="SamplePlayer" parent="."]
 
-config/polyphony = 1
+config/polyphony = 5
 config/samples = SubResource( 2 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0

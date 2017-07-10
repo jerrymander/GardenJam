@@ -62,7 +62,7 @@ func _poke_plot(var x, var y):
 			(y+0.5)*plot_height_per)
 		plot[x][y].set_pos(centered_position)
 		add_child(plot[x][y])
-		get_node("../SamplePlayer").play("sfx_doink_1")
+		get_node("../SamplePlayer").play("sfx_doink_2")
 		#print(str(x)+", "+str(y))
 	else:
 		if (plot[x][y].is_grown()):
