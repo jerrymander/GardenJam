@@ -22,6 +22,7 @@ func _ready():
 	var sprite_height = sprite_texture.get_height() * sprite_node.get_scale().y
 	plot_width_per = sprite_width / PLOT_WIDTH
 	plot_height_per = sprite_height / PLOT_HEIGHT
+	get_node("../Camera2D").set_pos(Vector2(250,325))
 	get_node("../Ambiance").set_volume(1.5)
 	get_node("../BGM").set_volume(0.7)
 	
@@ -51,6 +52,7 @@ func _input(var ev):
 		if (plot_click_x < PLOT_WIDTH && plot_click_y < PLOT_HEIGHT 
 			&& plot_click_x >= 0 && plot_click_y >= 0):
 			_poke_plot(plot_click_x, plot_click_y)
+	
 
 func _poke_plot(var x, var y):
 	if (plot[x][y] == null):
@@ -76,3 +78,4 @@ func _decide_mouse_cursor(var ev):
 		Input.set_custom_mouse_cursor(cursor_active)
 	else:
 		Input.set_custom_mouse_cursor(cursor_passive)
+
