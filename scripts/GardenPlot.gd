@@ -16,9 +16,10 @@ func _ready():
 	set_process_input(true)
 	
 	# calculate plot grid dimensions
-	var sprite_texture = get_node("Sprite").get_texture()
-	var sprite_width = sprite_texture.get_width()
-	var sprite_height = sprite_texture.get_height()
+	var sprite_node = get_node("Sprite")
+	var sprite_texture = sprite_node.get_texture()
+	var sprite_width = sprite_texture.get_width() * sprite_node.get_scale().x
+	var sprite_height = sprite_texture.get_height() * sprite_node.get_scale().y
 	plot_width_per = sprite_width / PLOT_WIDTH
 	plot_height_per = sprite_height / PLOT_HEIGHT
 	get_node("../Ambiance").set_volume(1.5)
@@ -42,8 +43,10 @@ func _input(var ev):
 	_decide_mouse_cursor(ev)
 	if (ev.type == InputEvent.MOUSE_BUTTON && ev.pressed):
 		# calculate coordinate of click
-		var plot_click_x = floor(ev.pos.x / plot_width_per)
-		var plot_click_y = floor(ev.pos.y / plot_height_per)
+		var plot_click_x = ev.pos.x - get_pos().x
+		var plot_click_y = ev.pos.y - get_pos().y
+		plot_click_x = floor(plot_click_x / plot_width_per)
+		plot_click_y = floor(plot_click_y / plot_height_per)
 		
 		if (plot_click_x < PLOT_WIDTH && plot_click_y < PLOT_HEIGHT):
 			_poke_plot(plot_click_x, plot_click_y)

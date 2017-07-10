@@ -1,18 +1,25 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
-[ext_resource path="res://asset/sound/song_PeacefulGarden.ogg" type="AudioStream" id=1]
-[ext_resource path="res://asset/sound/amb_outdoorloop_2.ogg" type="AudioStream" id=2]
-[ext_resource path="res://scripts/GardenPlot.gd" type="Script" id=3]
-[ext_resource path="res://asset/naraessets/3x3plotgrid.png" type="Texture" id=4]
-[ext_resource path="res://asset/sound/sfx_woodblock_2.ogg" type="AudioStream" id=5]
-[ext_resource path="res://asset/sound/sfx_veggierip_1.ogg" type="AudioStream" id=6]
-[ext_resource path="res://asset/sound/sfx_veggierip_2.ogg" type="AudioStream" id=7]
+[ext_resource path="res://asset/naraessets/gameoutline.png" type="Texture" id=1]
+[ext_resource path="res://asset/sound/song_PeacefulGarden.ogg" type="AudioStream" id=2]
+[ext_resource path="res://asset/sound/amb_outdoorloop_2.ogg" type="AudioStream" id=3]
+[ext_resource path="res://scripts/GardenPlot.gd" type="Script" id=4]
+[ext_resource path="res://asset/naraessets/3x3plotgrid.png" type="Texture" id=5]
+[ext_resource path="res://asset/sound/sfx_woodblock_2.ogg" type="AudioStream" id=6]
+[ext_resource path="res://asset/sound/sfx_veggierip_1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://asset/sound/sfx_veggierip_2.ogg" type="AudioStream" id=8]
 
 [node name="GardenJam" type="Node"]
 
+[node name="Outline" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, -3 )
+texture = ExtResource( 1 )
+centered = false
+
 [node name="BGM" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 1 )
+stream/stream = ExtResource( 2 )
 stream/play = false
 stream/loop = false
 stream/volume_db = 0.0
@@ -23,7 +30,7 @@ stream/buffering_ms = 500
 
 [node name="Ambiance" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 2 )
+stream/stream = ExtResource( 3 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
@@ -32,27 +39,18 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
 
-[node name="GardenPlot" type="Node" parent="."]
+[node name="GardenPlot" type="Node2D" parent="."]
 
-script/script = ExtResource( 3 )
+transform/pos = Vector2( 80, 80 )
+script/script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="GardenPlot"]
 
-texture = ExtResource( 4 )
+transform/scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 5 )
 centered = false
 
 [node name="PlantSeed" type="StreamPlayer" parent="."]
-
-stream/stream = ExtResource( 5 )
-stream/play = false
-stream/loop = false
-stream/volume_db = 0.0
-stream/autoplay = false
-stream/paused = false
-stream/loop_restart_time = 0.0
-stream/buffering_ms = 500
-
-[node name="PlantPicked1" type="StreamPlayer" parent="."]
 
 stream/stream = ExtResource( 6 )
 stream/play = false
@@ -63,9 +61,20 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
 
-[node name="PlantPicked2" type="StreamPlayer" parent="."]
+[node name="PlantPicked1" type="StreamPlayer" parent="."]
 
 stream/stream = ExtResource( 7 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="PlantPicked2" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 8 )
 stream/play = false
 stream/loop = false
 stream/volume_db = 0.0
