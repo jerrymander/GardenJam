@@ -2,7 +2,8 @@ extends Node
 
 onready var cursor_passive = preload("res://asset/naraessets/glovecursor passive.png")
 onready var cursor_active = preload("res://asset/naraessets/glovecursor active.png")
-onready var proto_plant = preload("res://scenes/objects/ProtoPlant.tscn")
+onready var plant = preload("res://scenes/objects/Plant.tscn")
+onready var proto_plant_frames = preload("res://scenes/objects/ProtoPlantSpriteFrames.tres")
 
 const PLOT_WIDTH = 3
 const PLOT_HEIGHT = 3
@@ -56,7 +57,9 @@ func _input(var ev):
 
 func _poke_plot(var x, var y):
 	if (plot[x][y] == null):
-		plot[x][y] = proto_plant.instance()
+		#plot[x][y] = proto_plant.instance()
+		plot[x][y] = plant.instance().init_plant("Proto Plant", proto_plant_frames)
+		plot[x][y].set_scale(Vector2(0.25, 0.25))
 		var centered_position = Vector2(
 			(x+0.5)*plot_width_per, 
 			(y+0.5)*plot_height_per)
