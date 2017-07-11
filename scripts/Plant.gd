@@ -1,19 +1,24 @@
 extends Node2D
 
 var plant_name
+var plant_seedbag
 var plant_frames = AnimatedSprite.new()
 
 func _ready():
 	pass
 
-func init_plant(var name, var frames):
+func init_plant(var name, var seedbag, var frames):
 	plant_name = name
+	plant_seedbag = seedbag
 	plant_frames.set_sprite_frames(frames)
 	add_child(plant_frames)
 	return self
 
 func get_plant_name():
 	return plant_name
+
+func get_seedbag():
+	return plant_seedbag
 
 func get_current_stage():
 	return plant_frames.get_frame()
