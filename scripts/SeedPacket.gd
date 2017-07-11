@@ -21,7 +21,7 @@ func _ready():
 	for plant in seed_types:
 		print(plant.get_plant_name())
 		var plant_seed_packet = TextureButton.new()
-		plant_seed_packet.set_normal_texture(plant.get_seedbag())
+		plant_seed_packet.set_normal_texture(plant.get_plant_seedbag())
 		plant_seed_packet.set_pos(Vector2(position, 0))
 		position += 50
 		
@@ -29,4 +29,4 @@ func _ready():
 		add_child(plant_seed_packet)
 
 func _seed_packet_pressed(var pressed_packet):
-	print (pressed_packet.get_plant_name())
+	get_tree().get_root().get_node("GardenJam").set_selection(pressed_packet)

@@ -1,7 +1,7 @@
 extends Node
 
-onready var cursor_passive = preload("res://asset/naraessets/glovecursor passive.png")
-onready var cursor_active = preload("res://asset/naraessets/glovecursor active.png")
+const PLANT_CLASS = preload("Plant.gd")
+
 onready var plant = preload("res://scenes/objects/Plant.tscn")
 onready var proto_plant_frames = preload("res://scenes/objects/ProtoPlantSpriteFrames.tres")
 var proto_seedbag = preload("res://asset/naraessets/seedpacket yellow.png")
@@ -28,12 +28,7 @@ func _ready():
 	get_node("../Ambiance").set_volume(1.5)
 	get_node("../BGM").set_volume(0.7)
 	
-	# change cursor
-	#var resized_passive = cursor_passive.get_data().resized(50,50)
-	#cursor_passive.create_from_image(resized_passive)
-	#var resized_active = cursor_active.get_data().resized(50,50)
-	#cursor_active.create_from_image(resized_active)
-	Input.set_custom_mouse_cursor(cursor_passive)
+	get_tree().get_root().get_node("GardenJam").set_cursor_passive()
 	
 	# init plot array/grid
 	for x in range(PLOT_WIDTH):
@@ -54,13 +49,17 @@ func _input(var ev):
 		if (plot_click_x < PLOT_WIDTH && plot_click_y < PLOT_HEIGHT 
 			&& plot_click_x >= 0 && plot_click_y >= 0):
 			_poke_plot(plot_click_x, plot_click_y)
-	
+		
+		if (ev.button_index == 2): #right click
+			get_tree().get_root().get_node("GardenJam").set_selection(null)
 
 func _poke_plot(var x, var y):
 	if (plot[x][y] == null):
-		#plot[x][y] = proto_plant.instance()
-		plot[x][y] = plant.instance().init_plant("Proto Plant", proto_seedbag, proto_plant_frames)
-		plot[x][y].set_scale(Vector2(0.25, 0.25))
+		var selection = get_tree().get_root().get_node("GardenJam").get_selection()
+		if (selection == null || !selection extends PLANT_CLASS):
+			return
+		plot[x][y] = plant.instance().init_plant(selection.get_plant_name(), selection.get_plant_seedbag(), selection.get_plant_frames())
+		plot[x][y].set_scale(selection.get_scale())
 		var centered_position = Vector2(
 			(x+0.5)*plot_width_per, 
 			(y+0.5)*plot_height_per)
@@ -79,7 +78,7 @@ func _poke_plot(var x, var y):
 
 func _decide_mouse_cursor(var ev):
 	if (ev.type == InputEvent.MOUSE_BUTTON && ev.pressed):
-		Input.set_custom_mouse_cursor(cursor_active)
+		get_tree().get_root().get_node("GardenJam").set_cursor_active()
 	else:
-		Input.set_custom_mouse_cursor(cursor_passive)
+		get_tree().get_root().get_node("GardenJam").set_cursor_passive()
 

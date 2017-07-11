@@ -17,8 +17,11 @@ func init_plant(var name, var seedbag, var frames):
 func get_plant_name():
 	return plant_name
 
-func get_seedbag():
+func get_plant_seedbag():
 	return plant_seedbag
+
+func get_plant_frames():
+	return plant_frames.get_sprite_frames()
 
 func get_current_stage():
 	return plant_frames.get_frame()
