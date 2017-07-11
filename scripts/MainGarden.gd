@@ -16,7 +16,7 @@ func _ready():
 	add_child(packet)
 
 func _on_ToHouse_pressed():
-	print("clicked")
+	print("[MainGarden.gd] clicked")
 	get_node("TransitionAnim").play("Camera Slide")
 	get_node("SamplePlayer").play("sfx_noisesweep_1")
 
@@ -27,7 +27,7 @@ func _on_ToPlot_pressed():
 
 
 func _on_EnterHouse_pressed():
-	print ("to the house...!")
+	print ("[MainGarden.gd] to the house...!")
 
 func set_selection(var selection):
 	current_selection = selection

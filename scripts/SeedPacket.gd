@@ -19,7 +19,7 @@ func _ready():
 	
 	var position = 100
 	for plant in seed_types:
-		print(plant.get_plant_name())
+		#print(plant.get_plant_name())
 		var plant_seed_packet = TextureButton.new()
 		plant_seed_packet.set_normal_texture(plant.get_plant_seedbag())
 		plant_seed_packet.set_pos(Vector2(position, 0))

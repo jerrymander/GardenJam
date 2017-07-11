@@ -3,8 +3,6 @@ extends Node
 const PLANT_CLASS = preload("Plant.gd")
 
 onready var plant = preload("res://scenes/objects/Plant.tscn")
-onready var proto_plant_frames = preload("res://scenes/objects/ProtoPlantSpriteFrames.tres")
-var proto_seedbag = preload("res://asset/naraessets/seedpacket yellow.png")
 
 const PLOT_WIDTH = 3
 const PLOT_HEIGHT = 3
