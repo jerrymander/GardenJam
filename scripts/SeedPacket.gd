@@ -11,11 +11,11 @@ var yellow_seedbag = preload("res://asset/naraessets/Prototypes/seedpacket yello
 
 
 func _ready():
-	var proto_plant = plant_preload.instance().init_plant("Proto Plant", proto_seedbag, proto_plant_frames)
+	var proto_plant = plant_preload.instance().init_plant("Proto Plant", proto_seedbag, proto_plant_frames, 10)
 	proto_plant.set_scale(Vector2(0.25, 0.25))
 	seed_types.append(proto_plant)
-	seed_types.append(plant_preload.instance().init_plant("Pink Plant", pink_seedbag, pink_plant_frames))
-	seed_types.append(plant_preload.instance().init_plant("Yellow Plant", yellow_seedbag, yellow_plant_frames))
+	seed_types.append(plant_preload.instance().init_plant("Pink Plant", pink_seedbag, pink_plant_frames, 20))
+	seed_types.append(plant_preload.instance().init_plant("Yellow Plant", yellow_seedbag, yellow_plant_frames, 15))
 	
 	var position = 100
 	for plant in seed_types:

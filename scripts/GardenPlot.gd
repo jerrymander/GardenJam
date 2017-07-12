@@ -34,10 +34,9 @@ func _ready():
 
 func _process(delta):
 	tick = tick + delta
-	if (tick >= 5):
-		tick -= 5
+	if (tick >= 1):
+		tick -= 1
 		_update_plots()
-
 
 func _input(var ev):
 	_decide_mouse_cursor(ev)
@@ -60,7 +59,7 @@ func _poke_plot(var x, var y):
 		var selection = get_tree().get_root().get_node("GardenJam").get_selection()
 		if (selection == null || !selection extends PLANT_CLASS):
 			return
-		plot[x][y] = plant.instance().init_plant(selection.get_plant_name(), selection.get_plant_seedbag(), selection.get_plant_frames())
+		plot[x][y] = plant.instance().init_plant(selection.get_plant_name(), selection.get_plant_seedbag(), selection.get_plant_frames(), selection.get_plant_grow_time())
 		plot[x][y].set_scale(selection.get_scale())
 		var centered_position = Vector2(
 			(x+0.5)*plot_width_per, 
@@ -71,21 +70,20 @@ func _poke_plot(var x, var y):
 		#print(str(x)+", "+str(y))
 	else:
 		if (plot[x][y].is_grown()):
-			#print("rip")
 			plot[x][y].queue_free()
 			plot[x][y] = null
 			get_node("../SamplePlayer").play("sfx_veggierip_2")
-		#else:
+		else:
+			print (plot[x][y], ": ", plot[x][y].get_plant_init_time())
 			#plot[x][y].grow()
 
 func _update_plots():
 	for x in range(PLOT_WIDTH):
 		for y in range(PLOT_HEIGHT):
 			if (plot[x][y] != null):
-				plot[x][y].grow()
-				#var plant_age = OS.get_unix_time() - plot[x][y].get_plant_init_time()
-					#if (plant_age % plot[x][y].get_plant_grow_time() == 0):
-					#plot[x][y].grow()
+				var plant_age = OS.get_unix_time() - plot[x][y].get_plant_init_time()
+				if (plant_age != 0 && plant_age % plot[x][y].get_plant_grow_time() == 0):
+					plot[x][y].grow()
 
 func _decide_mouse_cursor(var ev):
 	if (ev.type == InputEvent.MOUSE_BUTTON && ev.pressed):
