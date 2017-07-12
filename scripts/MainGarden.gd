@@ -11,9 +11,9 @@ var current_selection
 
 func _ready():
 	set_process_input(true)
-	get_node("Camera2D").set_pos(Vector2(250,325))
+	get_node("Camera2D").set_pos(Vector2(750,325))
 	get_node("Ambiance").set_volume(1.5)
-	get_node("BGM").set_volume(0.7)
+	get_node("BGM").set_volume(0.9)
 	var packet = seed_packet.instance()
 	packet.set_pos(Vector2(0,550))
 	add_child(packet)
@@ -32,10 +32,12 @@ func _on_ToPlot_pressed():
 func _on_EnterHouse_pressed():
 	print ("[MainGarden.gd] let's go inside...!")
 	get_node("TransitionAnim").play("To House")
+	get_node("SamplePlayer").play("sfx_pluckypings_4")
 
 func _on_ExitHouse_pressed():
 	print ("[MainGarden.gd] let's go outside...!")
 	get_node("TransitionAnim").play_backwards("To House")
+	get_node("SamplePlayer").play("sfx_pluckypings_8")
 
 func set_selection(var selection):
 	current_selection = selection
