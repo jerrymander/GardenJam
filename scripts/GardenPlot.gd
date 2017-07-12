@@ -90,6 +90,6 @@ func _update_plots():
 func _decide_mouse_cursor(var ev):
 	if (ev.type == InputEvent.MOUSE_BUTTON && ev.pressed):
 		get_tree().get_root().get_node("GardenJam").set_cursor_active()
-	else:
+	elif (ev.type == InputEvent.MOUSE_BUTTON && !ev.pressed):
 		get_tree().get_root().get_node("GardenJam").set_cursor_passive()
 

@@ -24,14 +24,18 @@ func _on_ToHouse_pressed():
 	get_node("TransitionAnim").play("Camera Slide")
 	get_node("SamplePlayer").play("sfx_noisesweep_1")
 
-
 func _on_ToPlot_pressed():
+	print("[MainGarden.gd] clicked")
 	get_node("TransitionAnim").play_backwards("Camera Slide")
 	get_node("SamplePlayer").play("sfx_noisesweep_1")
 
-
 func _on_EnterHouse_pressed():
-	print ("[MainGarden.gd] to the house...!")
+	print ("[MainGarden.gd] let's go inside...!")
+	get_node("TransitionAnim").play("To House")
+
+func _on_ExitHouse_pressed():
+	print ("[MainGarden.gd] let's go outside...!")
+	get_node("TransitionAnim").play_backwards("To House")
 
 func set_selection(var selection):
 	current_selection = selection
@@ -56,3 +60,4 @@ func set_cursor_passive():
 func set_cursor_active():
 	if (current_selection == null):
 		Input.set_custom_mouse_cursor(cursor_active)
+
