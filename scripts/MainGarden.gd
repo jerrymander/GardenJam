@@ -3,8 +3,8 @@ extends Control
 const PLANT_CLASS = preload("Plant.gd")
 
 onready var turnip_house = preload("res://scenes/InsideTurnip.tscn")
-var cursor_passive = preload("res://asset/naraessets/glovecursor passive.png")
-var cursor_active = preload("res://asset/naraessets/glovecursor active.png")
+var cursor_passive = preload("res://asset/naraessets/Prototypes/glovecursor passive.png")
+var cursor_active = preload("res://asset/naraessets/Prototypes/glovecursor active.png")
 
 var seed_packet = preload("res://scenes/objects/SeedPacket.tscn")
 var current_selection
