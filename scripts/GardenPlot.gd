@@ -9,12 +9,13 @@ const PLOT_HEIGHT = 3
 
 var plot_width_per
 var plot_height_per
+var tick = 0
 
 var plot = []
 
 func _ready():
 	set_process_input(true)
-	
+	set_process(true)
 	# calculate plot grid dimensions
 	var sprite_node = get_node("Sprite")
 	var sprite_texture = sprite_node.get_texture()
@@ -22,9 +23,6 @@ func _ready():
 	var sprite_height = sprite_texture.get_height() * sprite_node.get_scale().y
 	plot_width_per = sprite_width / PLOT_WIDTH
 	plot_height_per = sprite_height / PLOT_HEIGHT
-	get_node("../Camera2D").set_pos(Vector2(250,325))
-	get_node("../Ambiance").set_volume(1.5)
-	get_node("../BGM").set_volume(0.7)
 	
 	get_tree().get_root().get_node("GardenJam").set_cursor_passive()
 	
@@ -33,7 +31,13 @@ func _ready():
 		plot.append([])
 		for y in range(PLOT_HEIGHT):
 			plot[x].append(null)
-	
+
+func _process(delta):
+	tick = tick + delta
+	if (tick >= 5):
+		tick -= 5
+		_update_plots()
+
 
 func _input(var ev):
 	_decide_mouse_cursor(ev)
@@ -71,8 +75,17 @@ func _poke_plot(var x, var y):
 			plot[x][y].queue_free()
 			plot[x][y] = null
 			get_node("../SamplePlayer").play("sfx_veggierip_2")
-		else:
-			plot[x][y].grow()
+		#else:
+			#plot[x][y].grow()
+
+func _update_plots():
+	for x in range(PLOT_WIDTH):
+		for y in range(PLOT_HEIGHT):
+			if (plot[x][y] != null):
+				plot[x][y].grow()
+				#var plant_age = OS.get_unix_time() - plot[x][y].get_plant_init_time()
+					#if (plant_age % plot[x][y].get_plant_grow_time() == 0):
+					#plot[x][y].grow()
 
 func _decide_mouse_cursor(var ev):
 	if (ev.type == InputEvent.MOUSE_BUTTON && ev.pressed):

@@ -3,11 +3,11 @@ extends Node2D
 var seed_types = []
 var plant_preload = preload("res://scenes/objects/Plant.tscn")
 var proto_plant_frames = preload("res://scenes/objects/ProtoPlantSpriteFrames.tres")
-var proto_seedbag = preload("res://asset/naraessets/seedpacket yellow.png")
+var proto_seedbag = preload("res://asset/naraessets/Prototypes/seedpacket yellow.png")
 var pink_plant_frames = preload("res://scenes/objects/PinkPlantSpriteFrames.tres")
-var pink_seedbag = preload("res://asset/naraessets/seedpacket pink.png")
+var pink_seedbag = preload("res://asset/naraessets/Prototypes/seedpacket pink.png")
 var yellow_plant_frames = preload("res://scenes/objects/YellowPlantSpriteFrames.tres")
-var yellow_seedbag = preload("res://asset/naraessets/seedpacket yellow.png")
+var yellow_seedbag = preload("res://asset/naraessets/Prototypes/seedpacket yellow.png")
 
 
 func _ready():
