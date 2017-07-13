@@ -66,15 +66,15 @@ func _poke_plot(var x, var y):
 			(y+0.5)*plot_height_per)
 		plot[x][y].set_pos(centered_position)
 		add_child(plot[x][y])
-		get_node("../SamplePlayer").play("sfx_doink_2")
+		get_parent().audio_node.get_node("SFXLibrary").play("sfx_doink_2")
 		#print(str(x)+", "+str(y))
 	else:
 		if (plot[x][y].is_grown()):
 			plot[x][y].queue_free()
 			plot[x][y] = null
-			get_node("../SamplePlayer").play("sfx_veggierip_2")
+			get_parent().audio_node.get_node("SFXLibrary").play("sfx_veggierip_2")
 		else:
-			print (plot[x][y], ": ", plot[x][y].get_plant_init_time())
+			print ("[GardenPlot.gd] ", plot[x][y], ": ", plot[x][y].get_plant_init_time())
 			#plot[x][y].grow()
 
 func _update_plots():
