@@ -9,12 +9,15 @@ var plant_frames = AnimatedSprite.new()
 func _ready():
 	pass
 
-func init_plant(var name, var seedbag, var frames, var grow_time):
+func init_plant(var name, var plant_data):
 	plant_init_time = OS.get_unix_time()
 	plant_name = name
-	plant_seedbag = seedbag
-	plant_grow_time = grow_time
-	plant_frames.set_sprite_frames(frames)
+	plant_grow_time = int(plant_data.get_grow_time(name))
+	plant_frames.set_sprite_frames(plant_data.get_plant_sprite_frames(name))
+	
+	var sprite_scale = plant_data.get_plant_sprite_scale(name)
+	set_scale(Vector2(sprite_scale, sprite_scale))
+	
 	add_child(plant_frames)
 	return self
 
