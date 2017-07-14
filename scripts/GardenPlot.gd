@@ -52,15 +52,15 @@ func _input(var ev):
 			_poke_plot(plot_click_x, plot_click_y)
 		
 		if (ev.button_index == 2): #right click
-			get_tree().get_root().get_node("GardenJam").set_selection(null)
+			get_tree().get_root().get_node("GardenJam").unset_selection()
 
 func _poke_plot(var x, var y):
 	if (plot[x][y] == null):
-		var selection = get_tree().get_root().get_node("GardenJam").get_selection()
-		if (selection == null || !selection extends PLANT_CLASS):
+		var selected_seed_packet = get_tree().get_root().get_node("GardenJam").get_selected_seed_packet()
+		if (selected_seed_packet == null):
 			return
-		plot[x][y] = plant.instance().init_plant(selection.get_plant_name(), selection.get_plant_seedbag(), selection.get_plant_frames(), selection.get_plant_grow_time())
-		plot[x][y].set_scale(selection.get_scale())
+		var plant_data = get_node("/root/PlantData")
+		plot[x][y] = plant.instance().init_plant(selected_seed_packet, plant_data)
 		var centered_position = Vector2(
 			(x+0.5)*plot_width_per, 
 			(y+0.5)*plot_height_per)

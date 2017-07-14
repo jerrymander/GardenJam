@@ -1,0 +1,18 @@
+{
+  "Proto Plant":{
+    "plant_frames_tres_path": "res://scenes/objects/ProtoPlantSpriteFrames.tres",
+    "plant_sprite_scale": 0.25,
+    "seedbag_png_path": "res://asset/naraessets/Prototypes/seedpacket.png",
+    "grow_time": 10
+  },
+  "Pink Plant":{
+    "plant_frames_tres_path": "res://scenes/objects/PinkPlantSpriteFrames.tres",
+    "seedbag_png_path": "res://asset/naraessets/Prototypes/seedpacket pink.png",
+    "grow_time": 20
+  },
+  "Yellow Plant":{
+    "plant_frames_tres_path": "res://scenes/objects/YellowPlantSpriteFrames.tres",
+    "seedbag_png_path": "res://asset/naraessets/Prototypes/seedpacket yellow.png",
+    "grow_time": 15
+  }
+}

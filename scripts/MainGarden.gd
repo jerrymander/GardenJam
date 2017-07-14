@@ -2,6 +2,8 @@ extends Control
 
 const PLANT_CLASS = preload("Plant.gd")
 
+onready var plant_data = get_node("/root/PlantData")
+
 var cursor_passive = preload("res://asset/naraessets/Prototypes/glovecursor passive.png")
 var cursor_active = preload("res://asset/naraessets/Prototypes/glovecursor active.png")
 
@@ -9,6 +11,8 @@ var audio_library = preload("res://scenes/AudioLibrary.tscn")
 var audio_node
 var seed_packet = preload("res://scenes/objects/SeedPacket.tscn")
 var current_selection
+
+var selected_seed_packet
 
 func _ready():
 	set_process_input(true)
@@ -43,13 +47,25 @@ func _on_ExitHouse_pressed():
 	get_node("TransitionAnim").play_backwards("To House")
 	audio_node.get_node("SFXLibrary").play("sfx_pluckypings_8")
 
-func set_selection(var selection):
-	current_selection = selection
-	if (current_selection == null):
-		set_cursor_passive()
-	elif (current_selection extends PLANT_CLASS):
-		print("[MainGarden.gd] "+selection.get_plant_name())
-		Input.set_custom_mouse_cursor(selection.get_plant_seedbag())
+func unset_selection():
+	selected_seed_packet = null
+	set_cursor_passive()
+	
+#func set_selection(var selection):
+#	current_selection = selection
+#	if (_nothing_is_selected()):
+#		set_cursor_passive()
+
+func _nothing_is_selected():
+	return selected_seed_packet == null
+
+func set_selected_seed_packet(var selection):
+	selected_seed_packet = selection
+	print("[MainGarden.gd] "+selection)
+	Input.set_custom_mouse_cursor(plant_data.get_seed_packet_texture(selection))
+
+func get_selected_seed_packet():
+	return selected_seed_packet
 
 func get_selection():
 	return current_selection
@@ -60,10 +76,10 @@ func set_cursor_passive():
 	#cursor_passive.create_from_image(resized_passive)
 	#var resized_active = cursor_active.get_data().resized(50,50)
 	#cursor_active.create_from_image(resized_active)
-	if (current_selection == null):
+	if (_nothing_is_selected()):
 		Input.set_custom_mouse_cursor(cursor_passive)
 	
 func set_cursor_active():
-	if (current_selection == null):
+	if (_nothing_is_selected()):
 		Input.set_custom_mouse_cursor(cursor_active)
 
