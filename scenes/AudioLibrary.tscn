@@ -1,28 +1,28 @@
 [gd_scene load_steps=25 format=1]
 
 [ext_resource path="res://scripts/AudioLibrary.gd" type="Script" id=1]
-[ext_resource path="res://asset/sound/amb_outdoorloop.ogg" type="AudioStream" id=2]
-[ext_resource path="res://asset/sound/song_PeacefulGarden.ogg" type="AudioStream" id=3]
-[ext_resource path="res://asset/sound/song_TheTurnipHouse.ogg" type="AudioStream" id=4]
-[ext_resource path="res://asset/sound/sfx_doink_1.smp" type="Sample" id=5]
-[ext_resource path="res://asset/sound/sfx_doink_2.smp" type="Sample" id=6]
-[ext_resource path="res://asset/sound/sfx_noisesweep_1.smp" type="Sample" id=7]
-[ext_resource path="res://asset/sound/sfx_noisesweep_2.smp" type="Sample" id=8]
-[ext_resource path="res://asset/sound/sfx_pluckypings_1.smp" type="Sample" id=9]
-[ext_resource path="res://asset/sound/sfx_pluckypings_10.smp" type="Sample" id=10]
-[ext_resource path="res://asset/sound/sfx_pluckypings_11.smp" type="Sample" id=11]
-[ext_resource path="res://asset/sound/sfx_pluckypings_2.smp" type="Sample" id=12]
-[ext_resource path="res://asset/sound/sfx_pluckypings_3.smp" type="Sample" id=13]
-[ext_resource path="res://asset/sound/sfx_pluckypings_4.smp" type="Sample" id=14]
-[ext_resource path="res://asset/sound/sfx_pluckypings_5.smp" type="Sample" id=15]
-[ext_resource path="res://asset/sound/sfx_pluckypings_6.smp" type="Sample" id=16]
-[ext_resource path="res://asset/sound/sfx_pluckypings_7.smp" type="Sample" id=17]
-[ext_resource path="res://asset/sound/sfx_pluckypings_8.smp" type="Sample" id=18]
-[ext_resource path="res://asset/sound/sfx_pluckypings_9.smp" type="Sample" id=19]
-[ext_resource path="res://asset/sound/sfx_veggierip_1.smp" type="Sample" id=20]
-[ext_resource path="res://asset/sound/sfx_veggierip_2.smp" type="Sample" id=21]
-[ext_resource path="res://asset/sound/sfx_woodblock_1.smp" type="Sample" id=22]
-[ext_resource path="res://asset/sound/sfx_woodblocks_down.smp" type="Sample" id=23]
+[ext_resource path="res://asset/audio/ambiance/amb_outdoorloop.ogg" type="AudioStream" id=2]
+[ext_resource path="res://asset/audio/songs/song_PeacefulGarden.ogg" type="AudioStream" id=3]
+[ext_resource path="res://asset/audio/songs/song_TheTurnipHouse.ogg" type="AudioStream" id=4]
+[ext_resource path="res://asset/audio/sfx/sfx_doink_1.smp" type="Sample" id=5]
+[ext_resource path="res://asset/audio/sfx/sfx_doink_2.smp" type="Sample" id=6]
+[ext_resource path="res://asset/audio/sfx/sfx_noisesweep_1.smp" type="Sample" id=7]
+[ext_resource path="res://asset/audio/sfx/sfx_noisesweep_2.smp" type="Sample" id=8]
+[ext_resource path="res://asset/audio/sfx/sfx_pluckypings_1.smp" type="Sample" id=9]
+[ext_resource path="res://asset/audio/sfx/sfx_pluckypings_10.smp" type="Sample" id=10]
+[ext_resource path="res://asset/audio/sfx/sfx_pluckypings_11.smp" type="Sample" id=11]
+[ext_resource path="res://asset/audio/sfx/sfx_pluckypings_2.smp" type="Sample" id=12]
+[ext_resource path="res://asset/audio/sfx/sfx_pluckypings_3.smp" type="Sample" id=13]
+[ext_resource path="res://asset/audio/sfx/sfx_pluckypings_4.smp" type="Sample" id=14]
+[ext_resource path="res://asset/audio/sfx/sfx_pluckypings_5.smp" type="Sample" id=15]
+[ext_resource path="res://asset/audio/sfx/sfx_pluckypings_6.smp" type="Sample" id=16]
+[ext_resource path="res://asset/audio/sfx/sfx_pluckypings_7.smp" type="Sample" id=17]
+[ext_resource path="res://asset/audio/sfx/sfx_pluckypings_8.smp" type="Sample" id=18]
+[ext_resource path="res://asset/audio/sfx/sfx_pluckypings_9.smp" type="Sample" id=19]
+[ext_resource path="res://asset/audio/sfx/sfx_veggierip_1.smp" type="Sample" id=20]
+[ext_resource path="res://asset/audio/sfx/sfx_veggierip_2.smp" type="Sample" id=21]
+[ext_resource path="res://asset/audio/sfx/sfx_woodblock_1.smp" type="Sample" id=22]
+[ext_resource path="res://asset/audio/sfx/sfx_woodblocks_down.smp" type="Sample" id=23]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -145,7 +145,9 @@ samples/sfx_woodblocks_down = {
 
 script/script = ExtResource( 1 )
 
-[node name="Ambiance" type="StreamPlayer" parent="."]
+[node name="Songs" type="Node" parent="."]
+
+[node name="Ambiance" type="StreamPlayer" parent="Songs"]
 
 stream/stream = ExtResource( 2 )
 stream/play = false
@@ -156,7 +158,7 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
 
-[node name="PeacefulGarden" type="StreamPlayer" parent="."]
+[node name="PeacefulGarden" type="StreamPlayer" parent="Songs"]
 
 stream/stream = ExtResource( 3 )
 stream/play = false
@@ -167,7 +169,7 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
 
-[node name="TurnipHouse" type="StreamPlayer" parent="."]
+[node name="TurnipHouse" type="StreamPlayer" parent="Songs"]
 
 stream/stream = ExtResource( 4 )
 stream/play = false
@@ -194,5 +196,62 @@ default/filter/gain = 1.0
 default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
+
+[node name="PlayTurnipHouse" type="Button" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 46.0
+margin/top = 103.0
+margin/right = 139.0
+margin/bottom = 123.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Turnip House"
+flat = false
+
+[node name="PlayPeacefulGarden" type="Button" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 41.0
+margin/top = 66.0
+margin/right = 157.0
+margin/bottom = 86.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Peaceful Garden"
+flat = false
+
+[node name="CurrentSong" type="Button" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 261.0
+margin/top = 61.0
+margin/right = 273.0
+margin/bottom = 81.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Current Song:"
+flat = false
+
+[connection signal="pressed" from="PlayTurnipHouse" to="." method="_on_PlayTurnipHouse_pressed"]
+
+[connection signal="pressed" from="PlayPeacefulGarden" to="." method="_on_PlayPeacefulGarden_pressed"]
+
+[connection signal="pressed" from="CurrentSong" to="." method="_on_CurrentSong_pressed"]
 
 

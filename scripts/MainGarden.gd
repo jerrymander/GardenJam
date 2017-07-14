@@ -19,8 +19,8 @@ func _ready():
 	get_node("Camera2D").set_pos(Vector2(750,325))
 	audio_node = audio_library.instance()
 	add_child(audio_node)
-	audio_node.get_node("Ambiance").play(true)
-	audio_node.get_node("PeacefulGarden").play(true)
+	audio_node.get_node("Songs/Ambiance").play()
+	audio_node.play_song("Songs/PeacefulGarden")
 	var packet = seed_packet.instance()
 	packet.set_pos(Vector2(0,550))
 	add_child(packet)
@@ -41,11 +41,13 @@ func _on_EnterHouse_pressed():
 	print ("[MainGarden.gd] let's go inside...!")
 	get_node("TransitionAnim").play("To House")
 	audio_node.get_node("SFXLibrary").play("sfx_pluckypings_4")
+	audio_node.song_transition_to("Songs/TurnipHouse")
 
 func _on_ExitHouse_pressed():
 	print ("[MainGarden.gd] let's go outside...!")
 	get_node("TransitionAnim").play_backwards("To House")
 	audio_node.get_node("SFXLibrary").play("sfx_pluckypings_8")
+	audio_node.song_transition_to("Songs/PeacefulGarden")
 
 func unset_selection():
 	selected_seed_packet = null
