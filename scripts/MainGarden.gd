@@ -9,7 +9,6 @@ var cursor_active = preload("res://asset/naraessets/Prototypes/glovecursor activ
 
 var audio_library = preload("res://scenes/AudioLibrary.tscn")
 var audio_node
-var seed_packet = preload("res://scenes/objects/SeedPacket.tscn")
 var current_selection
 
 var selected_seed_packet
@@ -21,10 +20,19 @@ func _ready():
 	add_child(audio_node)
 	audio_node.get_node("Songs/Ambiance").play()
 	audio_node.play_song("Songs/PeacefulGarden")
-	var packet = seed_packet.instance()
-	packet.set_pos(Vector2(0,550))
-	add_child(packet)
+	_init_seed_packet()
+	_init_item_chest()
+
 	
+func _init_seed_packet():
+	var packet = preload("res://scenes/objects/SeedPacket.tscn").instance()
+	packet.set_pos(Vector2(0,550))
+	add_child(packet)	
+
+func _init_item_chest():
+	var item_chest = preload("res://scenes/objects/ItemChest.tscn").instance()
+	item_chest.set_pos(Vector2(225, 550))
+	add_child(item_chest)
 
 func _on_ToHouse_pressed():
 	print("[MainGarden.gd] clicked")
