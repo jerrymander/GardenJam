@@ -42,8 +42,8 @@ func _input(var ev):
 	_decide_mouse_cursor(ev)
 	if (ev.type == InputEvent.MOUSE_BUTTON && ev.pressed):
 		# calculate coordinate of click
-		var plot_click_x = ev.pos.x - get_pos().x
-		var plot_click_y = ev.pos.y - get_pos().y
+		var plot_click_x = ev.global_pos.x - get_global_pos().x
+		var plot_click_y = ev.global_pos.y - get_global_pos().y
 		plot_click_x = floor(plot_click_x / plot_width_per)
 		plot_click_y = floor(plot_click_y / plot_height_per)
 		

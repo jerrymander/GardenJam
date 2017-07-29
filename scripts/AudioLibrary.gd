@@ -25,45 +25,48 @@ func stop_song():
 
 func song_transition_to(var next_song):
 	if (current_song != null):
-		out_song = current_song
+		fade_out()
 		current_song = get_node(next_song)
-		fade_out = Tween.new()
-		add_child(fade_out)
-		#setting up fade out
-		fade_out.interpolate_method(
-			self,
-			"fadeout",
-			out_song.get_volume(),
-			0,
-			0.5,
-			Tween.TRANS_LINEAR,
-			Tween.EASE_IN
-			)
-		fade_out.connect("tween_complete", self, "_on_fade_out_tween_complete")
-		fade_out.start()
-	else:
-		current_song = get_node(next_song)
-	
+	fade_in(next_song)
+
+func fade_out():
+	out_song = current_song
+	fade_out = Tween.new()
+	add_child(fade_out)
+	fade_out.interpolate_method(
+		self,
+		"tween_fadeout",
+		out_song.get_volume(),
+		0,
+		0.5,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_IN
+		)
+	fade_out.connect("tween_complete", self, "_on_fade_out_tween_complete")
+	fade_out.start()
+
+func fade_in(song):
+	current_song = get_node(song)
 	fade_in = Tween.new()
 	add_child(fade_in)
 	fade_in.interpolate_method(
 		self,
-		"fadein",
+		"tween_fadein",
 		0,
 		1,
 		0.5,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN,
-		0.5
+		1
 		)
 	current_song.set_volume(0)
 	current_song.play()
 	fade_in.start()
 
-func fadeout(value):
+func tween_fadeout(value):
 	out_song.set_volume(value)
 
-func fadein(value):
+func tween_fadein(value):
 	current_song.set_volume(value)
 
 func play_sfx(var sfx_name):

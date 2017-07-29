@@ -1,0 +1,12 @@
+{
+  "Banana Lamp":{
+    "furniture_png_path": "res://asset/naraessets/Prototypes/Furniture/banana lamp prototype.png",
+    "x": 1,
+    "y": 2
+  },
+  "lettuce hammock":{
+    "seedbag_png_path": "res://asset/naraessets/Prototypes/Furniture/lettuce hammock prototype.png",
+    "x": 2,
+    "y": 1
+  }
+}

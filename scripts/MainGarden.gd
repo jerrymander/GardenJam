@@ -11,8 +11,12 @@ var audio_library = preload("res://scenes/AudioLibrary.tscn")
 var audio_node
 var seed_packet = preload("res://scenes/objects/SeedPacket.tscn")
 var current_selection
+var screen_transition_black = preload("res://scenes/objects/BlackScreenTransition.tscn")
+var black_screen
 
 var selected_seed_packet
+
+onready var animations = get_node("TransitionAnim")
 
 func _ready():
 	set_process_input(true)
@@ -25,6 +29,9 @@ func _ready():
 	packet.set_pos(Vector2(0,550))
 	add_child(packet)
 	
+	black_screen = screen_transition_black.instance()
+	black_screen.set_pos(Vector2(0,0))
+	add_child(black_screen)
 
 func _on_ToHouse_pressed():
 	print("[MainGarden.gd] clicked")
@@ -40,12 +47,14 @@ func _on_ToPlot_pressed():
 func _on_EnterHouse_pressed():
 	print ("[MainGarden.gd] let's go inside...!")
 	get_node("TransitionAnim").play("To House")
+	black_screen.get_child(0).play("Fade_Black")
 	audio_node.get_node("SFXLibrary").play("sfx_pluckypings_4")
 	audio_node.song_transition_to("Songs/TurnipHouse")
 
 func _on_ExitHouse_pressed():
 	print ("[MainGarden.gd] let's go outside...!")
 	get_node("TransitionAnim").play_backwards("To House")
+	black_screen.get_child(0).play("Fade_Black")
 	audio_node.get_node("SFXLibrary").play("sfx_pluckypings_8")
 	audio_node.song_transition_to("Songs/PeacefulGarden")
 
@@ -85,3 +94,6 @@ func set_cursor_active():
 	if (_nothing_is_selected()):
 		Input.set_custom_mouse_cursor(cursor_active)
 
+#tween functions
+func tween_fadetoblack():
+	pass
