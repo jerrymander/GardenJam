@@ -1,10 +1,12 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var furniture_name
+var furniture_size = Vector2(0,0)
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass
+
+func init_furniture(name, data):
+	furniture_name = name
+	furniture_size = Vector2(1,1)
+

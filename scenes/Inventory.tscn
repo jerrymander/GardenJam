@@ -44,16 +44,28 @@ transform/pos = Vector2( 168, 230 )
 
 transform/pos = Vector2( 280, 230 )
 
+[node name="7" type="Position2D" parent="Sprite"]
+
+transform/pos = Vector2( 60, 325 )
+
+[node name="8" type="Position2D" parent="Sprite"]
+
+transform/pos = Vector2( 168, 325 )
+
+[node name="9" type="Position2D" parent="Sprite"]
+
+transform/pos = Vector2( 280, 325 )
+
 [node name="RightButton" type="TextureButton" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 202.0
-margin/top = 385.0
-margin/right = 266.0
-margin/bottom = 449.0
+margin/left = 241.0
+margin/top = 374.0
+margin/right = 305.0
+margin/bottom = 438.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -69,10 +81,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 76.0
-margin/top = 384.0
-margin/right = 140.0
-margin/bottom = 448.0
+margin/left = 39.0
+margin/top = 377.0
+margin/right = 103.0
+margin/bottom = 441.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -115,5 +127,46 @@ shortcut = null
 textures/normal = ExtResource( 10 )
 params/resize_mode = 0
 params/stretch_mode = 0
+
+[node name="Page" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 153.0
+margin/top = 404.0
+margin/right = 193.0
+margin/bottom = 421.0
+text = "1"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Refresh" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 411.0
+margin/top = 90.0
+margin/right = 431.0
+margin/bottom = 110.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+[connection signal="pressed" from="RightButton" to="." method="_on_RightButton_pressed"]
+
+[connection signal="pressed" from="LeftButton" to="." method="_on_LeftButton_pressed"]
+
+[connection signal="pressed" from="AddLamp" to="." method="_on_AddLamp_pressed"]
+
+[connection signal="pressed" from="AddHammock" to="." method="_on_AddHammock_pressed"]
+
+[connection signal="pressed" from="Refresh" to="." method="_on_Refresh_pressed"]
 
 

@@ -13,6 +13,7 @@ var seed_packet = preload("res://scenes/objects/SeedPacket.tscn")
 var current_selection
 var screen_transition_black = preload("res://scenes/objects/BlackScreenTransition.tscn")
 var black_screen
+var inventory = preload("res://scenes/Inventory.tscn")
 
 var selected_seed_packet
 
