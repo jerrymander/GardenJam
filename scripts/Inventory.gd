@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 const INVEN_WIDTH = 3
 const INVEN_HEIGHT = 3
@@ -8,23 +8,26 @@ onready var furniture_lib = preload("res://scenes/objects/Furnitures.tscn").inst
 
 onready var sprite = get_node("Sprite")
 var inventory = []
+var inven_map = {}
 var inventory_size
-var page = []
+var slots = []
 var page_viewing
 
 var display_loc
 
 func _ready():
+	add_child(furniture_lib)
+	
 	for x in range (INVEN_HEIGHT):
-		page.append([])
+		slots.append([])
 		for y in range (INVEN_WIDTH):
-			page[x].append(null)
+			slots[x].append(null)
 	check_nav_buttons()
 	page_viewing = 1
-	display_inven(page_viewing)
+	draw_slots()
 
-func display_inven(page):
-	var start_index = (page-1) * PAGE_SIZE
+func draw_slots():
+	var start_index = (page_viewing-1) * PAGE_SIZE
 	inventory_size = inventory.size()
 	if (inventory_size == 0):
 		pass
@@ -32,38 +35,41 @@ func display_inven(page):
 		for x in range (start_index, min(inventory_size, start_index+8)):
 			var page_x = (x-start_index) % PAGE_SIZE
 			var page_y = floor((x-start_index) / PAGE_SIZE)
-			page[page_x][page_y] = inventory[x][0]
+			var furniture_name = inventory[x][0]
+			var furniture_id = furniture_lib.get_furn_id(furniture_name)
+			slots[page_x][page_y] = furniture_lib.get_furn_sprite(furniture_name)
 			display_loc = sprite.get_child(x % 9).get_pos()
-			page[page_x][page_y].set_pos(display_loc)
-			add_child(page[page_x][page_y])
+			slots[page_x][page_y].set_pos(display_loc)
+			add_child(slots[page_x][page_y])
 
-func clear_inven():
-	if page[0][0] != null:
-		for x in range (INVEN_WIDTH):
-			for y in range (INVEN_HEIGHT):
-				page[x][y].queue_free()
+func clear_slots():
+	for x in range (INVEN_WIDTH):
+		for y in range (INVEN_HEIGHT):
+			if slots[x][y] != null:
+				slots[x][y].queue_free()
+				slots[x][y] = null
 
 func get_item(id):
-	remove_item(id)
-	if (inventory[id][1] == 0):
-		inventory[id].remove()
 	return inventory[id][0]
 
-func add_item(item):
-	inventory_size = inventory.size()
-	var furniture_item = furniture_lib.get_furniture(item)
-	for x in range (inventory_size):
-		if inventory[x].has(furniture_item):
-			inventory[x][1] += 1
-		else:
-			inventory.append([furniture_item, 1])
-	if (inventory_size == 0):
-		inventory.append([furniture_item, 1])
+func map_inventory():
+	for i in range(inventory.size()):
+		inven_map[inventory[i][0]] = i
 
-func remove_item(id):
-	inventory[id][1] -= 1
-	if (inventory[id][1] == 0):
-		inventory[id].remove()
+func add_item(name, count):
+	inventory_size = inventory.size()
+	if inven_map.has(name):
+		inventory[inven_map[name]][1] += count
+	else:
+		inven_map[name] = inventory.size()
+		inventory.append([name, 1])
+
+func remove_item(name, count):
+	var furn_id = inven_map[name]
+	if (inventory[furn_id][1] > count):
+		inventory[furn_id][1] -= count
+	else:
+		inventory[furn_id].remove()
 
 func check_nav_buttons():
 	if (page_viewing == 1):
@@ -73,28 +79,30 @@ func check_nav_buttons():
 		get_node("RightButton").set_disabled(false)
 
 func _on_AddHammock_pressed():
-	add_item("LettuceHammock")
+	add_item("LettuceHammock", 1)
 	print("Hammock clicked.")
 
 func _on_AddLamp_pressed():
-	add_item("BananaLamp")
+	add_item("BananaLamp", 1)
 	print("Lamp clicked.")
 
 func _on_RightButton_pressed():
-	clear_inven()
+	clear_slots()
 	page_viewing += 1
 	check_nav_buttons()
 	print("Now viewing page: ", page_viewing)
-	display_inven(page_viewing)
+	draw_slots()
 
 func _on_LeftButton_pressed():
-	clear_inven()
+	clear_slots()
 	page_viewing -= 1
 	check_nav_buttons()
 	print("Now viewing page: ", page_viewing)
-	display_inven(page_viewing)
+	draw_slots()
 
 func _on_Refresh_pressed():
-	clear_inven()
-	display_inven(page_viewing)
+	clear_slots()
+	draw_slots()
+	map_inventory()
 	print (inventory)
+	print (inven_map)
