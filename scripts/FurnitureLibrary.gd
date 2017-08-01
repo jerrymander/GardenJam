@@ -1,5 +1,7 @@
 extends Node
 
+onready var decor_data = get_node("/root/DecorData")
+
 const ITEM_NAME = 0
 const ITEM_SIZE = 1
 const ITEM_STACKS = 2

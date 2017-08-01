@@ -1,0 +1,62 @@
+{
+  "Banana Lamp":{
+    "decor_png_path": "res://asset/naraessets/Prototypes/Furniture/banana lamp prototype.png",
+    "x": 1,
+    "y": 2,
+    "icon_scale": 0.5
+  },
+  "Lettuce Hammock":{
+    "decor_png_path": "res://asset/naraessets/Prototypes/Furniture/lettuce hammock prototype.png",
+    "x": 2,
+    "y": 1,
+    "icon_scale": 0.5
+  },
+  "Proto Chair":{
+    "decor_png_path": "res://asset/protodecor/proto_chair.png",
+    "x": 1,
+    "y": 1,
+    "icon_scale": 1
+  },
+  "Proto Corn Lamp":{
+    "decor_png_path": "res://asset/proto_corn_lamp.png",
+    "x": 1,
+    "y": 1,
+    "icon_scale": 1
+  },
+  "Proto Corn Sofa":{
+    "decor_png_path": "res://asset/protodecor/proto_corn_sofa.png",
+    "x": 1,
+    "y": 1,
+    "icon_scale": 1
+  },
+  "Proto Watermelon Bed":{
+    "decor_png_path": "res://asset/protodecor/proto_watermelon_bed.png",
+    "x": 2,
+    "y": 1,
+    "icon_scale": 0.5
+  },
+  "Proto Watermelon Chair":{
+    "decor_png_path": "res://asset/protodecor/proto_watermelon_chair.png",
+    "x": 1,
+    "y": 1,
+    "icon_scale": 1
+  },
+  "Proto Watermelon Rug":{
+    "decor_png_path": "res://asset/protodecor/proto_watermelon_rug.png",
+    "x": 2,
+    "y": 2,
+    "icon_scale": 0.5
+  },
+  "Proto Painting Mr. Cobb":{
+    "decor_png_path": "res://asset/protodecor/proto_painting_mr_cobb.png",
+    "x": 1,
+    "y": 1,
+    "icon_scale": 1
+  },
+  "Proto Painting Melon and Son":{
+    "decor_png_path": "res://asset/protodecor/proto_painting_melon_and_son.png",
+    "x": 1,
+    "y": 1,
+    "icon_scale": 1
+  }
+}

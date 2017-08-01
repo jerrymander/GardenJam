@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://scripts/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://asset/naraessets/chest inventory.png" type="Texture" id=2]
@@ -8,7 +8,14 @@
 [ext_resource path="res://asset/naraessets/Prototypes/button_r.png" type="Texture" id=6]
 [ext_resource path="res://asset/naraessets/Prototypes/button_r_pressed.png" type="Texture" id=7]
 [ext_resource path="res://asset/naraessets/Prototypes/button_r_hover.png" type="Texture" id=8]
-[ext_resource path="res://asset/naraessets/Prototypes/Furniture/banana lamp prototype.png" type="Texture" id=9]
+[ext_resource path="res://asset/fonts/Pacifico/Pacifico-Regular.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 32
+font/use_mipmaps = false
+font/use_filter = true
+font/font = ExtResource( 9 )
 
 [node name="Inventory" type="Control"]
 
@@ -16,10 +23,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
+margin/left = 87.0
+margin/top = 24.0
+margin/right = 87.0
+margin/bottom = 24.0
 script/script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -29,39 +36,39 @@ centered = false
 
 [node name="1" type="Position2D" parent="Sprite"]
 
-transform/pos = Vector2( 60, 135 )
+transform/pos = Vector2( 27.9999, 112 )
 
 [node name="2" type="Position2D" parent="Sprite"]
 
-transform/pos = Vector2( 168, 135 )
+transform/pos = Vector2( 138, 108 )
 
 [node name="3" type="Position2D" parent="Sprite"]
 
-transform/pos = Vector2( 280, 135 )
+transform/pos = Vector2( 249, 108 )
 
 [node name="4" type="Position2D" parent="Sprite"]
 
-transform/pos = Vector2( 60, 230 )
+transform/pos = Vector2( 28.9999, 210 )
 
 [node name="5" type="Position2D" parent="Sprite"]
 
-transform/pos = Vector2( 168, 230 )
+transform/pos = Vector2( 142, 204 )
 
 [node name="6" type="Position2D" parent="Sprite"]
 
-transform/pos = Vector2( 280, 230 )
+transform/pos = Vector2( 253, 201 )
 
 [node name="7" type="Position2D" parent="Sprite"]
 
-transform/pos = Vector2( 60, 325 )
+transform/pos = Vector2( 31.9999, 300 )
 
 [node name="8" type="Position2D" parent="Sprite"]
 
-transform/pos = Vector2( 168, 325 )
+transform/pos = Vector2( 135, 297 )
 
 [node name="9" type="Position2D" parent="Sprite"]
 
-transform/pos = Vector2( 280, 325 )
+transform/pos = Vector2( 248, 291 )
 
 [node name="LeftButton" type="TextureButton" parent="."]
 
@@ -69,9 +76,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 39.0
+margin/left = 47.0
 margin/top = 377.0
-margin/right = 103.0
+margin/right = 111.0
 margin/bottom = 441.0
 toggle_mode = false
 enabled_focus_mode = 2
@@ -101,22 +108,21 @@ textures/hover = ExtResource( 8 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
-[node name="AddLamp" type="TextureButton" parent="."]
+[node name="AddLamp" type="Button" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 351.0
-margin/top = 425.0
-margin/right = 413.0
-margin/bottom = 567.0
+margin/left = 14.0
+margin/top = 517.0
+margin/right = 129.0
+margin/bottom = 547.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 9 )
-params/resize_mode = 0
-params/stretch_mode = 0
+text = "Add Lamp"
+flat = false
 
 [node name="AddHammock" type="Button" parent="."]
 
@@ -124,26 +130,26 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 112.0
-margin/top = 466.0
-margin/right = 227.0
-margin/bottom = 496.0
+margin/left = 16.0
+margin/top = 475.0
+margin/right = 131.0
+margin/bottom = 505.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Add Hammock"
 flat = false
 
-[node name="MenuButton" type="MenuButton" parent="."]
+[node name="AddDecor" type="MenuButton" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 106.0
-margin/top = 538.0
-margin/right = 205.0
-margin/bottom = 558.0
+margin/left = 23.0
+margin/top = 561.0
+margin/right = 122.0
+margin/bottom = 581.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
@@ -158,13 +164,14 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 411.0
-margin/top = 90.0
-margin/right = 431.0
-margin/bottom = 110.0
+margin/left = 242.0
+margin/top = 478.0
+margin/right = 299.0
+margin/bottom = 498.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+text = "refresh"
 flat = false
 
 [node name="Page" type="Label" parent="."]
@@ -173,10 +180,13 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 153.0
-margin/top = 404.0
-margin/right = 193.0
-margin/bottom = 421.0
+margin/left = 155.0
+margin/top = 379.0
+margin/right = 195.0
+margin/bottom = 436.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.196078, 0.686275, 0.54902, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
 align = 1
 percent_visible = 1.0
@@ -190,6 +200,8 @@ max_lines_visible = -1
 [connection signal="pressed" from="AddLamp" to="." method="_on_AddLamp_pressed"]
 
 [connection signal="pressed" from="AddHammock" to="." method="_on_AddHammock_pressed"]
+
+[connection signal="pressed" from="AddDecor" to="." method="_on_MenuButton_pressed"]
 
 [connection signal="pressed" from="Refresh" to="." method="_on_Refresh_pressed"]
 

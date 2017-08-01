@@ -3,9 +3,11 @@ extends Control
 const PLANT_CLASS = preload("Plant.gd")
 
 onready var plant_data = get_node("/root/PlantData")
+onready var decor_data = get_node("/root/DecorData")
+onready var animations = get_node("TransitionAnim")
 
-var cursor_passive = preload("res://asset/naraessets/Prototypes/glovecursor passive.png")
-var cursor_active = preload("res://asset/naraessets/Prototypes/glovecursor active.png")
+var cursor_passive = preload("res://asset/naraessets/Prototypes/cursor prototype_passive.png")
+var cursor_active = preload("res://asset/naraessets/Prototypes/cursor prototype_active.png")
 
 var audio_library = preload("res://scenes/AudioLibrary.tscn")
 var audio_node
@@ -14,10 +16,9 @@ var current_selection
 var screen_transition_black = preload("res://scenes/objects/BlackScreenTransition.tscn")
 var black_screen
 var inventory = preload("res://scenes/Inventory.tscn")
+var inventory_screen
 
 var selected_seed_packet
-
-onready var animations = get_node("TransitionAnim")
 
 func _ready():
 	set_process_input(true)
@@ -33,6 +34,12 @@ func _ready():
 	black_screen = screen_transition_black.instance()
 	black_screen.set_pos(Vector2(0,0))
 	add_child(black_screen)
+	
+	inventory_screen = inventory.instance()
+	inventory_screen.set("visibility/visible", false)
+	inventory_screen.set("focus/stop_mouse", false)
+	inventory_screen.set("focus/ignore_mouse", true)
+	add_child(inventory_screen)
 
 func _on_ToHouse_pressed():
 	print("[MainGarden.gd] clicked")
@@ -58,6 +65,10 @@ func _on_ExitHouse_pressed():
 	black_screen.get_child(0).play("Fade_Black")
 	audio_node.get_node("SFXLibrary").play("sfx_pluckypings_8")
 	audio_node.song_transition_to("Songs/PeacefulGarden")
+
+func _on_ChestButton_pressed():
+	print ("Opening Chest...")
+	toggle_inventory()
 
 func unset_selection():
 	selected_seed_packet = null
@@ -95,6 +106,8 @@ func set_cursor_active():
 	if (_nothing_is_selected()):
 		Input.set_custom_mouse_cursor(cursor_active)
 
-#tween functions
-func tween_fadetoblack():
-	pass
+func toggle_inventory():
+	inventory_screen.set_pos(Vector2(1087,24))
+	inventory_screen.set("visibility/visible", !inventory_screen.get("visibility/visible"))
+	inventory_screen.set("focus/stop_mouse", !inventory_screen.get("focus/stop_mouse"))
+	inventory_screen.set("focus/ignore_mouse", !inventory_screen.get("focus/ignore_mouse"))

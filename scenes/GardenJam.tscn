@@ -236,4 +236,6 @@ autoplay = ""
 
 [connection signal="pressed" from="ExitHouse" to="." method="_on_ExitHouse_pressed"]
 
+[connection signal="pressed" from="ChestButton" to="." method="_on_ChestButton_pressed"]
+
 
