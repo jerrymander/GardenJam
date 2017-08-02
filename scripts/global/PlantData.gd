@@ -32,3 +32,31 @@ func get_seed_packet_texture(var plant_name):
 
 func get_grow_time(var plant_name):
 	return plant_dictionary[plant_name]["grow_time"]
+
+#picking furniture to grow into/select
+func get_plant_common_decor(var plant_name):
+	var decor_list = plant_dictionary[plant_name]["grows_into_common"]
+	print("[PlantData.gd] ", decor_list)
+	var rng = randi() % decor_list.size()
+	return decor_list[rng]
+
+func get_plant_rare_decor(var plant_name):
+	var decor_list = plant_dictionary[plant_name]["grows_into_rare"]
+	print("[PlantData.gd] ", decor_list)
+	var rng = randi() % decor_list.size()
+	return decor_list[rng]
+
+func get_plant_random_decor(var plant_name):
+	var rnjesus = randi()
+	if (rnjesus % 10 == 0 && plant_dictionary[plant_name].has("grows_into_rare")):
+		return get_plant_rare_decor(plant_name)
+	else:
+		return get_plant_common_decor(plant_name)
+
+func get_plant_decor_list(var plant_name):
+	var decor_list = []
+	for x in range (plant_dictionary[plant_name]["grows_into_common"].size()):
+		decor_list.append(plant_dictionary[plant_name]["grows_into_common"][x])
+	for y in range (plant_dictionary[plant_name]["grows_into_rare"].size()):
+		decor_list.append(plant_dictionary[plant_name]["grows_into_rare"][y])
+	return decor_list

@@ -36,19 +36,21 @@ func _ready():
 	add_child(black_screen)
 	
 	inventory_screen = inventory.instance()
+	inventory_screen.set_name("Inventory")
 	inventory_screen.set("visibility/visible", false)
 	inventory_screen.set("focus/stop_mouse", false)
 	inventory_screen.set("focus/ignore_mouse", true)
 	add_child(inventory_screen)
+	randomize()
 
 func _on_ToHouse_pressed():
-	print("[MainGarden.gd] clicked")
+	print("[MainGarden.gd] Swipe right.")
 	get_node("TransitionAnim").play("Camera Slide")
 	audio_node.get_node("SFXLibrary").play("sfx_doink_1")
 	audio_node.get_node("SFXLibrary").play("sfx_noisesweep_1")
 
 func _on_ToPlot_pressed():
-	print("[MainGarden.gd] clicked")
+	print("[MainGarden.gd] Swipe left.")
 	get_node("TransitionAnim").play_backwards("Camera Slide")
 	audio_node.get_node("SFXLibrary").play("sfx_noisesweep_1")
 

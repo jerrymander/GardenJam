@@ -11,6 +11,7 @@ var plot_width_per
 var plot_height_per
 var tick = 0
 
+var inventory
 var plot = []
 
 func _ready():
@@ -66,13 +67,20 @@ func _poke_plot(var x, var y):
 			(y+0.5)*plot_height_per)
 		plot[x][y].set_pos(centered_position)
 		add_child(plot[x][y])
+		print("[GardenPlot.gd] Planted: ", plot[x][y].get_plant_name())
 		get_parent().audio_node.get_node("SFXLibrary").play("sfx_doink_2")
 		#print(str(x)+", "+str(y))
 	else:
 		if (plot[x][y].is_grown()):
+			var plant_data = get_node("/root/PlantData")
+			var plant_name = plot[x][y].get_plant_name()
+			var decor_name = plant_data.get_plant_random_decor(plant_name)
+			inventory = get_parent().get_node("Inventory")
+			inventory.add_item(decor_name, 1)
 			plot[x][y].queue_free()
 			plot[x][y] = null
 			get_parent().audio_node.get_node("SFXLibrary").play("sfx_veggierip_2")
+			print("[GardenPlot.gd] ", decor_name, " collected.")
 		else:
 			print ("[GardenPlot.gd] ", plot[x][y], ": ", plot[x][y].get_plant_init_time())
 			#plot[x][y].grow()

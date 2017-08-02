@@ -3,16 +3,22 @@
     "plant_frames_tres_path": "res://scenes/objects/ProtoPlantSpriteFrames.tres",
     "plant_sprite_scale": 0.25,
     "seedbag_png_path": "res://asset/naraessets/Prototypes/seedpacket.png",
-    "grow_time": 10
+    "grow_time": 5,
+    "grows_into_common": ["Lettuce Hammock", "Banana Lamp"],
+    "grows_into_rare": ["Pixel Chair"]
   },
   "Pink Plant":{
     "plant_frames_tres_path": "res://scenes/objects/PinkPlantSpriteFrames.tres",
     "seedbag_png_path": "res://asset/naraessets/Prototypes/seedpacket pink.png",
-    "grow_time": 20
+    "grow_time": 20,
+    "grows_into_common": ["Pixel Watermelon Chair","Pixel Watermelon Bed","Pixel Watermelon Rug"],
+    "grows_into_rare": ["Pixel Painting Melon and Son"]
   },
   "Yellow Plant":{
     "plant_frames_tres_path": "res://scenes/objects/YellowPlantSpriteFrames.tres",
     "seedbag_png_path": "res://asset/naraessets/Prototypes/seedpacket yellow.png",
-    "grow_time": 15
+    "grow_time": 15,
+    "grows_into_common": ["Pixel Corn Lamp", "Pixel Corn Sofa"],
+    "grows_into_rare": ["Pixel Painting Mr. Cobb"]
   }
 }
