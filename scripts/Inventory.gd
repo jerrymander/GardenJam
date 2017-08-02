@@ -4,9 +4,9 @@ const INVEN_WIDTH = 3
 const INVEN_HEIGHT = 3
 const PAGE_SIZE = INVEN_WIDTH * INVEN_HEIGHT
 
-#onready var furniture_lib = preload("res://scenes/objects/Furnitures.tscn").instance()
 onready var decor_data = get_node("/root/DecorData")
 onready var sprite = get_node("Sprite")
+onready var debug_menu = get_node("ChooseDecor")
 
 var inventory = []
 var inven_map = {}
@@ -17,8 +17,6 @@ var page_viewing
 var display_loc
 
 func _ready():
-	#add_child(furniture_lib)
-	font.set_font_data(f_pacifico)
 	
 	for x in range (INVEN_HEIGHT):
 		slots.append([])
@@ -27,6 +25,10 @@ func _ready():
 	page_viewing = 1
 	check_nav_buttons()
 	draw_slots()
+	
+	for x in range (decor_data.get_decor_names().size()):
+		var n = decor_data.get_decor_names()
+		debug_menu.add_item(n[x], x)
 
 func draw_slots():
 	var start_index = (page_viewing-1) * PAGE_SIZE
@@ -34,7 +36,7 @@ func draw_slots():
 	if (inventory_size == 0):
 		pass
 	else:
-		for x in range (start_index, min(inventory_size, start_index+8)):
+		for x in range (start_index, min(inventory_size, start_index+9)):
 			var page_x = (x-start_index) % INVEN_WIDTH
 			var page_y = int(floor((x-start_index) / INVEN_HEIGHT))
 			print("Inventory.gd] ", page_x, ", ", page_y)
@@ -97,13 +99,9 @@ func check_nav_buttons():
 		get_node("LeftButton").set_disabled(false)
 		get_node("RightButton").set_disabled(false)
 
-func _on_AddHammock_pressed():
-	add_item("Lettuce Hammock", 1)
-	print("Hammock clicked.")
-
-func _on_AddLamp_pressed():
-	add_item("Banana Lamp", 1)
-	print("Lamp clicked.")
+func _on_AddDecor_pressed():
+	var decor_name = debug_menu.get_item_text(debug_menu.get_selected())
+	add_item(decor_name, 1)
 
 func _on_RightButton_pressed():
 	clear_slots()

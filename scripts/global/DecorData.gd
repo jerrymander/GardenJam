@@ -18,6 +18,9 @@ func _read_data_file():
 func get_decor_names():
 	return decor_dictionary.keys()
 
+func get_decor_count():
+	return decor_dictionary.size()
+
 func get_decor_sprite(var decor_name):
 	return load(decor_dictionary[decor_name]["decor_png_path"])
 

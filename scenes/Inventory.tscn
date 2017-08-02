@@ -108,57 +108,38 @@ textures/hover = ExtResource( 8 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
-[node name="AddLamp" type="Button" parent="."]
+[node name="AddDecor" type="Button" parent="."]
 
-visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 14.0
-margin/top = 517.0
-margin/right = 129.0
-margin/bottom = 547.0
+margin/left = 244.0
+margin/top = 451.0
+margin/right = 335.0
+margin/bottom = 481.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Add Lamp"
+text = "Add Decor"
 flat = false
 
-[node name="AddHammock" type="Button" parent="."]
+[node name="ChooseDecor" type="OptionButton" parent="."]
 
-visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 16.0
-margin/top = 475.0
-margin/right = 131.0
-margin/bottom = 505.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-text = "Add Hammock"
-flat = false
-
-[node name="AddDecor" type="MenuButton" parent="."]
-
-visibility/visible = false
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 23.0
-margin/top = 561.0
-margin/right = 122.0
-margin/bottom = 581.0
+margin/left = 44.0
+margin/top = 457.0
+margin/right = 143.0
+margin/bottom = 477.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
 shortcut = null
-text = "Add Furniture"
 flat = true
+selected = -1
 items = [  ]
 
 [node name="Refresh" type="Button" parent="."]
@@ -167,10 +148,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 242.0
-margin/top = 478.0
-margin/right = 299.0
-margin/bottom = 498.0
+margin/left = 123.0
+margin/top = 547.0
+margin/right = 180.0
+margin/bottom = 567.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -200,11 +181,9 @@ max_lines_visible = -1
 
 [connection signal="pressed" from="RightButton" to="." method="_on_RightButton_pressed"]
 
-[connection signal="pressed" from="AddLamp" to="." method="_on_AddLamp_pressed"]
+[connection signal="pressed" from="AddDecor" to="." method="_on_AddDecor_pressed"]
 
-[connection signal="pressed" from="AddHammock" to="." method="_on_AddHammock_pressed"]
-
-[connection signal="pressed" from="AddDecor" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="ChooseDecor" to="." method="_on_MenuButton_pressed"]
 
 [connection signal="pressed" from="Refresh" to="." method="_on_Refresh_pressed"]
 
