@@ -7,18 +7,25 @@
     "grows_into_common": ["Lettuce Hammock", "Banana Lamp"],
     "grows_into_rare": ["Pixel Chair"]
   },
-  "Pink Plant":{
-    "plant_frames_tres_path": "res://scenes/objects/PinkPlantSpriteFrames.tres",
-    "seedbag_png_path": "res://asset/naraessets/Prototypes/seedpacket pink.png",
+  "Watermelon Plant":{
+    "plant_frames_tres_path": "res://scenes/objects/WatermelonPlantSpriteFrames.tres",
+    "seedbag_png_path": "res://asset/naraessets/Seed Packets/watermelon seed packet.png",
     "grow_time": 20,
     "grows_into_common": ["Pixel Watermelon Chair","Pixel Watermelon Bed","Pixel Watermelon Rug"],
     "grows_into_rare": ["Pixel Painting Melon and Son"]
   },
-  "Yellow Plant":{
-    "plant_frames_tres_path": "res://scenes/objects/YellowPlantSpriteFrames.tres",
-    "seedbag_png_path": "res://asset/naraessets/Prototypes/seedpacket yellow.png",
+  "Corn Plant":{
+    "plant_frames_tres_path": "res://scenes/objects/CornPlantSpriteFrames.tres",
+    "seedbag_png_path": "res://asset/naraessets/Seed Packets/corn seed packet.png",
     "grow_time": 15,
     "grows_into_common": ["Pixel Corn Lamp", "Pixel Corn Sofa"],
     "grows_into_rare": ["Pixel Painting Mr. Cobb"]
+  },
+  "Banana Plant":{
+    "plant_frames_tres_path": "res://scenes/objects/BananaPlantSpriteFrames.tres",
+    "seedbag_png_path": "res://asset/naraessets/Seed Packets/banana seed packet.png",
+    "grow_time": 15,
+    "grows_into_common": ["Banana Lamp"],
+    "grows_into_rare": ["Banana Lamp"]
   }
 }

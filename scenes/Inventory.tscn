@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://scripts/Inventory.gd" type="Script" id=1]
-[ext_resource path="res://asset/naraessets/chest inventory.png" type="Texture" id=2]
+[ext_resource path="res://asset/naraessets/500x650 Assets/chest inventory.png" type="Texture" id=2]
 [ext_resource path="res://asset/naraessets/Prototypes/button_l.png" type="Texture" id=3]
 [ext_resource path="res://asset/naraessets/Prototypes/button_l_pressed.png" type="Texture" id=4]
 [ext_resource path="res://asset/naraessets/Prototypes/button_l_hover.png" type="Texture" id=5]
@@ -9,6 +9,7 @@
 [ext_resource path="res://asset/naraessets/Prototypes/button_r_pressed.png" type="Texture" id=7]
 [ext_resource path="res://asset/naraessets/Prototypes/button_r_hover.png" type="Texture" id=8]
 [ext_resource path="res://asset/fonts/Pacifico/Pacifico-Regular.ttf" type="DynamicFontData" id=9]
+
 
 [sub_resource type="DynamicFont" id=1]
 

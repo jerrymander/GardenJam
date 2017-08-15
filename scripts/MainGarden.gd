@@ -22,13 +22,13 @@ var selected_seed_packet
 
 func _ready():
 	set_process_input(true)
-	get_node("Camera2D").set_pos(Vector2(750,325))
+	get_node("Camera2D").set_pos(Vector2(810,480))
 	audio_node = audio_library.instance()
 	add_child(audio_node)
 	audio_node.get_node("Songs/Ambiance").play()
 	audio_node.play_song("Songs/PeacefulGarden")
 	var packet = seed_packet.instance()
-	packet.set_pos(Vector2(0,550))
+	packet.set_pos(Vector2(0,750))
 	add_child(packet)
 	
 	black_screen = screen_transition_black.instance()
